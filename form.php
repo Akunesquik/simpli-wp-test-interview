@@ -48,18 +48,81 @@ if (isset($_GET['success'])) {
 }
 ?>
 
-<h2>Créer un nouveau post</h2>
-<form method="post">
-    <?php wp_nonce_field('simpli_post_nonce', 'simpli_nonce'); ?>
+<style>
+    .simpli-form-container {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #f9f9f9;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-    <label for="simpli_post_title">Titre :</label><br>
-    <input type="text" name="simpli_post_title" required><br><br>
+    .simpli-form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
 
-    <label for="simpli_post_content">Contenu :</label><br>
-    <textarea name="simpli_post_content"></textarea><br><br>
+    .simpli-form-group label {
+        width: 120px; /* Largeur fixe pour aligner tous les labels */
+        font-weight: bold;
+        text-align: right;
+        margin-right: 10px;
+    }
 
-    <label for="simpli_mymeta">Métadonnée (mymeta) :</label><br>
-    <input type="text" name="simpli_mymeta"><br><br>
+    .simpli-form-group input,
+    .simpli-form-group textarea {
+        flex: 1;
+        width: 100%; /* Tous les inputs prennent la même largeur */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-    <input type="submit" name="simpli_submit_post" value="Créer l'article">
-</form>
+    .simpli-form-group textarea {
+        height: 80px;
+        resize: vertical; /* Permet à l'utilisateur d'agrandir si besoin */
+    }
+
+    .simpli-submit-btn {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #0073aa;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .simpli-submit-btn:hover {
+        background: #005177;
+    }
+</style>
+
+<div class="simpli-form-container">
+    <h2>Mon formulaire pour créer un post et ses metadata</h2>
+    <form method="post">
+        <?php wp_nonce_field('simpli_post_nonce', 'simpli_nonce'); ?>
+
+        <div class="simpli-form-group">
+            <label for="simpli_post_title">Titre</label>
+            <input type="text" name="simpli_post_title" required>
+        </div>
+
+        <div class="simpli-form-group">
+            <label for="simpli_post_content">Contenu</label>
+            <textarea name="simpli_post_content"></textarea>
+        </div>
+
+        <div class="simpli-form-group">
+            <label for="simpli_mymeta">Métadonnée</label>
+            <input type="text" name="simpli_mymeta">
+        </div>
+
+        <input type="submit" name="simpli_submit_post" value="Créer l'article" class="simpli-submit-btn">
+    </form>
+</div>
+
