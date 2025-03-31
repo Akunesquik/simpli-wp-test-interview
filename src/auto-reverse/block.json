@@ -1,20 +1,31 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "create-block/auto-reverse",
-	"version": "0.1.0",
-	"title": "Reverse Auto",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "reverse un mot en cliquant sur le bouton",
-	"example": {},
-	"supports": {
-		"html": false
-	},
-	"textdomain": "auto-reverse",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"render": "file:./render.php",
-	"viewScript": "file:./view.js"
+    "apiVersion": 2,
+    "name": "create-block/auto-reverse",
+    "version": "0.1.0",
+    "title": "Bloc de texte inversible",
+    "category": "widgets",
+    "icon": "smiley",
+    "description": "Un bloc qui inverse le texte quand on clique dessus",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "auto-reverse",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "viewScript": "file:./frontend.js",
+    "attributes": {
+        "content": {
+            "type": "string",
+            "default": "Hello World"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#000000"
+        },
+        "borderColor": {
+            "type": "string",
+            "default": "#000000"
+        }
+    }
 }
