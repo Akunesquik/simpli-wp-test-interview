@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Trouver le paragraphe à l'intérieur du bloc
             const paragraph = this.querySelector('p');
             if (paragraph) {
-                // Inverser le texte
+                // Inverser le texte tout en préservant la couleur
                 paragraph.innerText = paragraph.innerText.split('').reverse().join('');
             }
         });

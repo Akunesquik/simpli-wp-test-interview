@@ -9,12 +9,18 @@ import metadata from './block.json';  // Importation des métadonnées du block
 registerBlockType(metadata.name, {
     // Fonction de modification du bloc dans l'éditeur Gutenberg
     edit: ({ attributes, setAttributes }) => {
-        const { content, backgroundColor, borderColor } = attributes;
+        const { content, backgroundColor, borderColor, textColor } = attributes;
         const [text, setText] = useState(content);
 
         return (
-            <div {...useBlockProps({ style: { backgroundColor, border: `2px solid ${borderColor}`, padding: '10px' } })}>
-                {/* Panneau de contrôle pour changer la couleur de fond et de bordure */}
+            <div {...useBlockProps({ 
+                style: { 
+                    backgroundColor, 
+                    border: `2px solid ${borderColor}`, 
+                    padding: '10px'
+                } 
+            })}>
+                {/* Panneau de contrôle pour changer les couleurs */}
                 <InspectorControls>
                     <PanelBody title="Customization">
                         <p>Background Color</p>
@@ -27,6 +33,11 @@ registerBlockType(metadata.name, {
                             value={borderColor}
                             onChange={(color) => setAttributes({ borderColor: color })}
                         />
+                        <p>Text Color</p>
+                        <ColorPalette 
+                            value={textColor}
+                            onChange={(color) => setAttributes({ textColor: color })}
+                        />
                     </PanelBody>
                 </InspectorControls>
 
@@ -36,6 +47,7 @@ registerBlockType(metadata.name, {
                     value={text}
                     onChange={(value) => setText(value)}
                     onBlur={() => setAttributes({ content: text })}
+                    style={{ color: textColor }}
                 />
             </div>
         );
@@ -43,7 +55,7 @@ registerBlockType(metadata.name, {
 
     // Fonction de rendu du bloc côté frontend
     save: ({ attributes }) => {
-        const { content, backgroundColor, borderColor } = attributes;
+        const { content, backgroundColor, borderColor, textColor } = attributes;
 
         return (
             <div 
@@ -58,7 +70,7 @@ registerBlockType(metadata.name, {
                 })}
                 data-content={content}
             >
-                <p>{content}</p>
+                <p style={{ color: textColor }}>{content}</p>
             </div>
         );
     },

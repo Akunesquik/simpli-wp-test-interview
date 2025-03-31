@@ -26,6 +26,10 @@
         "borderColor": {
             "type": "string",
             "default": "#000000"
+        },
+		"fontColor": {
+            "type": "string",
+            "default": "#FFF"
         }
     }
 }
