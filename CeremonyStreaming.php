@@ -10,8 +10,15 @@ class CeremonyStreamingPlugin
         add_action('init', function (){
             new CeremonyStreamingWidget();
         });
+       // Enregistrement du shortcode pour afficher le formulaire
+       add_shortcode('simplifia_form', [$this, 'render_simplifia_form']);
+    }
 
-
+    public function render_simplifia_form()
+    {
+        ob_start();
+        require plugin_dir_path(__FILE__) . 'form.php';
+        return ob_get_clean();
     }
 }
 

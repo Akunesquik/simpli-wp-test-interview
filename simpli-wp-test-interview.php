@@ -20,6 +20,9 @@ class SimpliCeremonyStreamingPlugin extends Singleton
         include_once plugin_dir_path( __FILE__ ).'/CeremonyStreaming.php';
         new CeremonyStreamingPlugin();
         register_block_type(plugin_dir_path( __FILE__ ) . '/build/demo');
+        
+        include_once plugin_dir_path(__FILE__) . 'install.php';
+        register_activation_hook(__FILE__, 'simpliwp_create_custom_table');
     }
 
 }
